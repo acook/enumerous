@@ -1,0 +1,9 @@
+name: enumerous
+version: 0.1.0
+
+authors:
+  - Anthony Cook <github@anthonymcook.com>
+
+crystal: 0.36.1
+
+license: https://raw.githubusercontent.com/acook/project_standards/master/code_copyleft/LICENSE # AGPLv3 with Classpath exception

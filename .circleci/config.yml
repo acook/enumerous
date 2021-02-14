@@ -1,0 +1,10 @@
+---
+version: 2.1
+workflows:
+  version: 2
+  build:
+    jobs:
+      - crystal/test:
+          format-check: false
+orbs:
+  crystal: manastech/crystal@1.0
