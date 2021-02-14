@@ -1,2 +1,2 @@
 require "spec"
-require "../src/enumerous"
+require "../src/enumerous/all"

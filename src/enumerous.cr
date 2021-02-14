@@ -1,6 +1,4 @@
-# TODO: Write documentation for `Enumerous`
-module Enumerous
-  VERSION = "0.1.0"
+require "./enumerous/version"
 
-  # TODO: Put your code here
+module Enumerous
 end
