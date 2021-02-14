@@ -20,6 +20,29 @@ Handy functionality for your Arrays and Enumerables!
 
 ## Usage
 
+### Erray Custom Array Type
+
+An Erray is a strict superset of the core Array functionality without modifying any builtin classes. It works great with normal Arrays!
+
+```crystal
+require "enumerous/erray"
+```
+
+```crystal
+has_different_elements = Erray{1,2}.similar [2,3]       #=> false
+contains_same_elements = Erray{1,2}.similar [2,1]       #=> true
+
+extra, missing = Erray{1,2}.diff [2,3]                  #=> {[3],[1]}
+
+index_of_first_difference = Erray{1,2}.diff_index [1,3] #=> 1
+
+{1,2}.find_and_map {|element| element > 1 && element.to_s }              #=> "2"
+```
+
+If you do not want Erray in the global namespace just pass `-Dno_erray_alias` to the compiler and you can still access it from `Enumerous::Erray`.
+
+### Optional Core Extension
+
 ```crystal
 require "enumerous/coreext"
 ```

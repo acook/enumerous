@@ -6,12 +6,16 @@ describe Enumerous do
   e2 = Erray{2,1}
   e3 = Erray{2,3}
 
-  it "knows when a same length array contains different items" do
+  it "knows when a same length erray contains different items" do
     (e1.similar e3).should be_false
   end
 
-  it "knows when two arrays contain the same elements" do
+  it "knows when two errays contain the same elements" do
     (e1.similar e2).should be_true
+  end
+
+  it "works with native array types" do
+    (e1.similar [2,1]).should be_true
   end
 
   it "returns nil when no value found" do
