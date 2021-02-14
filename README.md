@@ -2,6 +2,10 @@
 
 Handy functionality for your Arrays and Enumerables!
 
+[![GitHub release](https://img.shields.io/github/release/acook/enumerous.svg?style=for-the-badge)](https://github.com/acook/enumerous/releases)
+[![CircleCI](https://img.shields.io/circleci/build/github/acook/enumerous?style=for-the-badge)](https://app.circleci.com/pipelines/github/acook/enumerous)
+
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
@@ -17,7 +21,7 @@ Handy functionality for your Arrays and Enumerables!
 ## Usage
 
 ```crystal
-require "enumerous/all"
+require "enumerous/coreext"
 ```
 
 ```crystal
@@ -28,8 +32,8 @@ extra, missing = [1,2].diff [2,3]                  #=> {[3],[1]}
 
 index_of_first_difference = [1,2].diff_index [1,3] #=> 1
 
-[1,2].find_and_map {|element| element > 1 && element.to_s }             #=> "2"
-{a: 1, b: 2}.find_and_map {|key, value| value > 1 && "#{key}:#{value} } #=> "b:2"
+[1,2].find_and_map {|element| element > 1 && element.to_s }              #=> "2"
+{a: 1, b: 2}.find_and_map {|key, value| value > 1 && "#{key}:#{value}" } #=> "b:2"
 ```
 
 ## Contributing
