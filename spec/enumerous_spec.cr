@@ -33,6 +33,10 @@ describe Enumerous do
   end
 
   describe Enumerous::FindAndMap do
+    it "returns nil when no value found" do
+      ([1,2].find_and_map {|element| element > 2 && element.to_s }).should eq nil
+    end
+
     it "returns a mapped value that it finds from an array" do
       ([1,2].find_and_map {|element| element > 1 && element.to_s }).should eq "2"
     end
