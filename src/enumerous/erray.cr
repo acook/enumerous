@@ -158,7 +158,7 @@ class Enumerous::Erray(T)
 
   # ensure buffer is at least this big
   def grow(new_cap : UInt32)
-    return if new_cap < @cap
+    return if new_cap <= @cap
 
     @buffer = @buffer.realloc(new_cap)
     @cap = new_cap
