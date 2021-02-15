@@ -12,6 +12,19 @@ describe Enumerous do
     e1 == e2
   end
 
+  describe "class and identity operations" do
+    it "can convert Arrays to its own type" do
+      array = [1,2,3] of Int32
+      erray = Erray.wrap array
+      (erray).should be_a Erray(Int32)
+      erray.first.should eq 1
+    end
+
+    it "maintains its type across operations" do
+      (e1 + e2).should be_a Erray(Int32)
+    end
+  end
+
   describe "handy helpers" do
     describe "similarity" do
       it "knows when a same length erray contains different items" do
@@ -69,22 +82,4 @@ describe Enumerous do
       end
     end
   end
-
-<<<<<<< HEAD
-=======
-  it "can convert Arrays to its own type" do
-    array = [1,2,3] of Int32
-    erray = Erray.wrap array
-    (erray).should be_a Erray(Int32)
-    erray.first.should eq 1
-  end
-
-  it "can check basic equality" do
-    e1 == e2
-  end
-
-  it "maintains its type across operations" do
-    (e1 + e2).should be_a Erray(Int32)
-  end
->>>>>>> 14e3a66 (Naive implementation ported from blacklight)
 end
