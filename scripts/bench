@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+thispath="$(dirname "${BASH_SOURCE[0]}")"
+cd "$thispath"/.. || exit 1
+
+crystal run --release spec/benchmarks/*_bench.cr
