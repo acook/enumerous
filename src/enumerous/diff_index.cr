@@ -1,11 +1,12 @@
 module Enumerous::DiffIndex
   module DiffIndexArray
     def diff_index(vs)
-      index = 0
-      self.each do |element|
-        return index if element != vs[index]
-        index += 1
+      limit = Math.min(size, vs.size)
+      limit.times do |i|
+        return i if self[i] != vs[i]
       end
+
+      return limit unless self.size == vs.size
     end
   end
 end
