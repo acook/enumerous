@@ -120,14 +120,10 @@ class Enumerous::Erray(T)
 
   def -(other) : Erray(T)
     ery = Erray(T).new
+    set = other.to_set
 
     each do |e|
-      nope = false
-      other.each do |oe|
-        nope = (e == oe)
-        break if nope
-      end
-      ery << e unless nope
+      ery << e unless set.includes? e
     end
 
     ery
