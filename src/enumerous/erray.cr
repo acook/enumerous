@@ -3,7 +3,6 @@ class Enumerous::Erray(T)
   include Indexable(T)
   include Comparable(Erray)
 
-  include Enumerous::Diff::DiffArray
   include Enumerous::DiffIndex::DiffIndexArray
   include Enumerous::FindAndMap::FindAndMapEnumerable
 
@@ -87,8 +86,13 @@ class Enumerous::Erray(T)
     self
   end
 
+  # same handy helpers available as coreext and modules
   def similar(to)
     (self - to).empty? && (to - self.to_a).empty?
+  end
+
+  def diff(vs)
+    {(vs - self.to_a),(self - vs)}
   end
 
   def push(item : T)
