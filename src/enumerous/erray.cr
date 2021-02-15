@@ -148,7 +148,7 @@ class Enumerous::Erray(T)
 
   # required by Crystal for Erray{a,b} syntax
   def <<(item : T) : self
-    grow @cap + 1_u32
+    grow
 
     @buffer[@len] = item
     @len += 1_u32
@@ -157,8 +157,10 @@ class Enumerous::Erray(T)
   end
 
   # ensure buffer is at least this big
-  def grow(new_cap : UInt32)
-    return if new_cap <= @cap
+  def grow
+    return unless @cap == @len
+
+    new_cap = @cap + 3
 
     @buffer = @buffer.realloc(new_cap)
     @cap = new_cap
