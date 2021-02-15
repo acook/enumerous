@@ -160,7 +160,12 @@ class Enumerous::Erray(T)
   @[AlwaysInline]
   def grow
     if @cap == @len
-      @buffer = @buffer.realloc(@cap += 3)
+      if @cap > 10
+        @cap *= 2
+      else
+        @cap += 3
+      end
+      @buffer = @buffer.realloc(@cap)
     end
   end
 
