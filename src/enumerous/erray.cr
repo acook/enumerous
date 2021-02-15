@@ -134,18 +134,14 @@ class Enumerous::Erray(T)
 
   # required by Crystal for Erray{a,b} syntax
   def <<(item : T) : self
-    push item
-    self
-  end
-
-  def push(item : T)
     if avail > 0_u32
       @buffer[@len] = item
       @len += 1_u32
     else
       grow @cap + 1_u32
-      push item
+      self << item
     end
+    self
   end
 
   # ensure buffer is at least this big
