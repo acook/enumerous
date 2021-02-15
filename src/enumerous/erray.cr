@@ -7,8 +7,8 @@ class Enumerous::Erray(T)
   include Enumerous::FindAndMap::FindAndMapEnumerable
 
   # implementation based on blacklight/redlight's sumo strings
-  property len : UInt32 = 0
-  property cap : UInt32 = 0
+  property len : UInt32 = 0_u32
+  property cap : UInt32 = 0_u32
   property buffer : Pointer(T) = Pointer(T).null
 
   getter len
@@ -49,7 +49,7 @@ class Enumerous::Erray(T)
   end
 
   def size
-    @len
+    @len.to_i
   end
 
   protected def len=(new_len : UInt32)
@@ -96,19 +96,19 @@ class Enumerous::Erray(T)
   end
 
   def push(item : T)
-    if avail > 0
+    if avail > 0_u32
       @buffer[@len] = item
-      @len += 1
+      @len += 1_u32
     else
-      grow @cap + 1
+      grow @cap + 1_u32
       push item
     end
   end
 
   def delete_at(index : UInt32) : T
     item = @buffer[index]
-    (@buffer + index).copy_from(@buffer + index + 1, @len - index)
-    @len -= 1
+    (@buffer + index).copy_from(@buffer + index + 1_u32, @len - index)
+    @len -= 1_u32
     item
   end
 
