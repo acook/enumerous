@@ -157,13 +157,11 @@ class Enumerous::Erray(T)
   end
 
   # ensure buffer is at least this big
+  @[AlwaysInline]
   def grow
-    return unless @cap == @len
-
-    new_cap = @cap + 3
-
-    @buffer = @buffer.realloc(new_cap)
-    @cap = new_cap
+    if @cap == @len
+      @buffer = @buffer.realloc(@cap += 3)
+    end
   end
 
   # memory used vs allocated
