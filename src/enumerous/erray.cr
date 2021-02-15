@@ -130,6 +130,20 @@ class Enumerous::Erray(T)
     end
   end
 
+  def inspect(io : IO) : Nil
+    to_s io
+  end
+
+  def to_s(io : IO) : Nil
+    io << self.class.name
+    executed = exec_recursive(:to_s) do
+      io << '{'
+      join io, ", ", &.inspect(io)
+      io << '}'
+    end
+    io << "{...}" unless executed
+  end
+
   # allocation stuff, will probably all end up private
 
   # required by Crystal for Erray{a,b} syntax
