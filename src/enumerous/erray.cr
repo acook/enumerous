@@ -148,18 +148,18 @@ class Enumerous::Erray(T)
 
   # allocation stuff, will probably all end up private
 
-  # memory used vs allocated
-  @[AlwaysInline]
-  def avail
-    @cap - @len
-  end
-
   # ensure buffer is at least this big
   def grow(new_cap : UInt32)
     if new_cap > @cap
       @buffer = @buffer.realloc(new_cap)
       @cap = new_cap
     end
+  end
+
+  # memory used vs allocated
+  @[AlwaysInline]
+  def avail
+    @cap - @len
   end
 
 end
