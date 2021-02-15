@@ -80,12 +80,6 @@ class Enumerous::Erray(T)
     @buffer[index]
   end
 
-  # required by Crystal for Erray{a,b} syntax
-  def <<(item : T) : self
-    push item
-    self
-  end
-
   # same handy helpers available as coreext and modules
   def similar(to)
     (self - to).empty? && (to - self.to_a).empty?
@@ -93,16 +87,6 @@ class Enumerous::Erray(T)
 
   def diff(vs)
     {(vs - self.to_a),(self - vs)}
-  end
-
-  def push(item : T)
-    if avail > 0_u32
-      @buffer[@len] = item
-      @len += 1_u32
-    else
-      grow @cap + 1_u32
-      push item
-    end
   end
 
   def delete_at(index : UInt32) : T
@@ -147,6 +131,22 @@ class Enumerous::Erray(T)
   end
 
   # allocation stuff, will probably all end up private
+
+  # required by Crystal for Erray{a,b} syntax
+  def <<(item : T) : self
+    push item
+    self
+  end
+
+  def push(item : T)
+    if avail > 0_u32
+      @buffer[@len] = item
+      @len += 1_u32
+    else
+      grow @cap + 1_u32
+      push item
+    end
+  end
 
   # ensure buffer is at least this big
   def grow(new_cap : UInt32)
